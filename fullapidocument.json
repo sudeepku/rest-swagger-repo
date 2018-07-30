@@ -1,0 +1,3406 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Location Recognition",
+    "description": "Bing Maps API",
+    "version": "Build_air_bing_bingmaps_bingmaps"
+  },
+  "host": "dev.virtualearth.net",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/REST/v1/LocationRecog/{point}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Location Recognition",
+        "operationId": "getRESTV1LocationRecogByPoint",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "point",
+            "description": "Point",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "radius",
+            "description": "Radius",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "top",
+            "description": "Top",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dateTime",
+            "description": "Datetime Stamp",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceUnit",
+            "description": "Distance Unit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "verboseplacenames",
+            "description": "Verbose Names",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeEntityTypes",
+            "description": "Entity Types",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.LocationRecogResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Elevation/List": {
+      "get": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get Elevation for Latitude and Longitude",
+        "operationId": "getRESTV1ElevationList",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "points",
+            "description": "Comma-separated list of latitude and longitude values",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get Elevation for Latitude and Longitude",
+        "operationId": "postRESTV1ElevationList",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "Size of entity body, in OCTETs",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Set to `text/plain; charset=utf-8`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Comma-seperated list of lat/longs, e.g. `points=38.8895,77.0501,38.8877,-77.0472,38.8904,-77.0474,38.8896,77.0351`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Elevation/Polyline": {
+      "get": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get elevations at equally-spaced locations along a polyline path",
+        "operationId": "getRESTV1ElevationPolyline",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "points",
+            "description": "Comma-separated list of latitude and longitude values",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "samples",
+            "description": "Specifies the number of equally-spaced elevation values to provide along a polyline path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "heights",
+            "description": "Specifies which sea level model to use to calculate elevation",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get elevations at equally-spaced locations along a polyline path",
+        "operationId": "postRESTV1ElevationPolyline",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "Size of entity body, in OCTETs",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Set to `text/plain; charset=utf-8`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "heights",
+            "description": "Specifies which sea level model to use to calculate elevation",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Comma-seperated list of lat/longs, e.g. `points=38.8895,77.0501,38.8877,-77.0472,38.8904,-77.0474,38.8896,77.0351`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Elevation/Bounds": {
+      "get": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get elevations at equally-spaced locations within an area on the Earth defined as a bounding box",
+        "operationId": "getRESTV1ElevationBounds",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "bounds",
+            "description": "Specifies the rectangular area over which to provide elevation values",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "rows",
+            "description": "Specifies the number of rows to use to divide the bounding box area into a grid",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cols",
+            "description": "Specifies the number of columns to use to divide the bounding box area into a grid",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "heights",
+            "description": "Specifies which sea level model to use to calculate elevation",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Elevation/SeaLevel": {
+      "get": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get the offset of the geoid sea level Earth model from the ellipsoid Earth model at a set of latitude and longitude coordinates",
+        "operationId": "getRESTV1ElevationSeaLevel",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "points",
+            "description": "Comma-separated list of latitude and longitude values",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "heights",
+            "description": "Specifies which sea level model to use to calculate elevation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Elevation V1"
+        ],
+        "summary": "Get the offset of the geoid sea level Earth model from the ellipsoid Earth model at a set of latitude and longitude coordinates",
+        "operationId": "postRESTV1ElevationSeaLevel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "Size of entity body, in OCTETs",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Set to `text/plain; charset=utf-8`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "heights",
+            "description": "Specifies which sea level model to use to calculate elevation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Comma-seperated list of lat/longs, e.g. `points=38.8895,77.0501,38.8877,-77.0472,38.8904,-77.0474,38.8896,77.0351`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{countryRegion}/{adminDistrict}/{postalCode}/{locality}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Address",
+        "operationId": "getRESTV1LocationsByCountryRegionByAdminDistrictByPostalCodeByLocality",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "adminDistrict",
+            "description": "Country or Region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "locality",
+            "description": "City or Neighborhood",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "postalCode",
+            "description": "Postal Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "addressLine",
+            "description": "Official Street Address",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "countryRegion",
+            "description": "ISO Country Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{countryRegion}/{adminDistrict}/{postalCode}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Address",
+        "operationId": "getRESTV1LocationsByCountryRegionByAdminDistrictByPostalCode",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "adminDistrict",
+            "description": "Country or Region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "postalCode",
+            "description": "Postal Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "addressLine",
+            "description": "Official Street Address",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "countryRegion",
+            "description": "ISO Country Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{countryRegion}/{adminDistrict}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Address",
+        "operationId": "getRESTV1LocationsByCountryRegionByAdminDistrict",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "adminDistrict",
+            "description": "Country or Region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "addressLine",
+            "description": "Official Street Address",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "countryRegion",
+            "description": "ISO Country Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{countryRegion}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Address",
+        "operationId": "getRESTV1LocationsByCountryRegion",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "addressLine",
+            "description": "Official Street Address",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "countryRegion",
+            "description": "ISO Country Code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Address",
+        "operationId": "getRESTV1Locations",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "addressLine",
+            "description": "Official Street Address",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{query}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Query",
+        "operationId": "getRESTV1LocationsByQuery",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "query",
+            "description": "A string that contains information about a location, such as an address or landmark name.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxResults",
+            "description": "Max number of locations to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Locations/{point}": {
+      "get": {
+        "tags": [
+          "Location V1"
+        ],
+        "summary": "Find a Location by Point",
+        "operationId": "getRESTV1LocationsByPoint",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "point",
+            "description": "Latitude,Longitude",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeEntityTypes",
+            "description": "Specifies the entity types that you want to return in the response.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "includeNeighborhood",
+            "description": "Specifies whether to include neighborhood in response (`1` is true, `0` if false)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Only valid value is `ciso2`, which includes the ISO country code in response addresses",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "output",
+            "description": "Output Format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.MultipleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/{centerPoint}/{zoomLevel}": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map that is centered at a specified point",
+        "operationId": "getRESTV1ImageryMapByImagerySetByCenterPointByZoomLevel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "zoomLevel",
+            "description": "The level of zoom to display",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/{centerPoint}": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map that is centered at a specified point",
+        "operationId": "getRESTV1ImageryMapByImagerySetByCenterPoint",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map that is centered at a specified point",
+        "operationId": "getRESTV1ImageryMapByImagerySet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/{centerPoint}/{zoomLevel}/Routes": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map with the specified route.",
+        "operationId": "getRESTV1ImageryMapByImagerySetByCenterPointByZoomLevelRoutes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "zoomLevel",
+            "description": "The level of zoom to display",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "avoid",
+            "description": "Specifies the road type or types (deliminated with a comma) to minimize or avoid when the route is created for the driving travel mode: `highways`, `tolls`, `minimizeTolls`, `minimizeHighways`.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceBeforeFirstTurn",
+            "description": "Specifies the distance before the first turn is allowed in the route. This option only applies to the driving travel mode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dateTime",
+            "description": "The desired transit time",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxSolutions",
+            "description": "Specifies the maximum number of transit routes to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "optimize",
+            "description": "Specifies what parameters to use to optimize the route on the map: `distance`, `time`, or `timeWithTraffic`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "timeType",
+            "description": "Specifies how to interpret the date and transit time value that is specified by the dateTime parameter: `Arrival`, `Departure`, `LastAvailable`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "travelMode",
+            "description": "The mode of travel for the route: `Driving`, `Walking`, or `Transit`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "waypoint.n",
+            "description": "A list of two or more waypoints (e.g. `wp.1`, wp.2`, etc. for the route), e.g. `waypoint.1=San%20Francisco&amp;waypoint.2=Seattle`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/{centerPoint}/Routes": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map with the specified route.",
+        "operationId": "getRESTV1ImageryMapByImagerySetByCenterPointRoutes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "avoid",
+            "description": "Specifies the road type or types (deliminated with a comma) to minimize or avoid when the route is created for the driving travel mode: `highways`, `tolls`, `minimizeTolls`, `minimizeHighways`.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceBeforeFirstTurn",
+            "description": "Specifies the distance before the first turn is allowed in the route. This option only applies to the driving travel mode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dateTime",
+            "description": "The desired transit time",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxSolutions",
+            "description": "Specifies the maximum number of transit routes to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "optimize",
+            "description": "Specifies what parameters to use to optimize the route on the map: `distance`, `time`, or `timeWithTraffic`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "timeType",
+            "description": "Specifies how to interpret the date and transit time value that is specified by the dateTime parameter: `Arrival`, `Departure`, `LastAvailable`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "travelMode",
+            "description": "The mode of travel for the route: `Driving`, `Walking`, or `Transit`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "waypoint.n",
+            "description": "A list of two or more waypoints (e.g. `wp.1`, wp.2`, etc. for the route), e.g. `waypoint.1=San%20Francisco&amp;waypoint.2=Seattle`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/Routes": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map with the specified route.",
+        "operationId": "getRESTV1ImageryMapByImagerySetRoutes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "avoid",
+            "description": "Specifies the road type or types (deliminated with a comma) to minimize or avoid when the route is created for the driving travel mode: `highways`, `tolls`, `minimizeTolls`, `minimizeHighways`.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceBeforeFirstTurn",
+            "description": "Specifies the distance before the first turn is allowed in the route. This option only applies to the driving travel mode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dateTime",
+            "description": "The desired transit time",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "maxSolutions",
+            "description": "Specifies the maximum number of transit routes to return",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "optimize",
+            "description": "Specifies what parameters to use to optimize the route on the map: `distance`, `time`, or `timeWithTraffic`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "timeType",
+            "description": "Specifies how to interpret the date and transit time value that is specified by the dateTime parameter: `Arrival`, `Departure`, `LastAvailable`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "travelMode",
+            "description": "The mode of travel for the route: `Driving`, `Walking`, or `Transit`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "waypoint.n",
+            "description": "A list of two or more waypoints (e.g. `wp.1`, wp.2`, etc. for the route), e.g. `waypoint.1=San%20Francisco&amp;waypoint.2=Seattle`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Map/{imagerySet}/{query}": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get a map that is based on a query",
+        "operationId": "getRESTV1ImageryMapByImagerySetByQuery",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "query",
+            "description": "A query string that is used to determine the map location to display -- *Required when route, center point, or map area is not specified*",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "zoomLevel",
+            "description": "The level of zoom to display",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapSize",
+            "description": "The width and height in pixels of the static map output, e.g. `mapSize=100,600`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pushpin",
+            "description": "One or more pushpin locations to display on the map. A series of values that include a Point value (latitude and longitude) with options to add a label of up to three (3) characters and to specify an icon style, e.g., `pushpin=47.610,-122.107;5;P10`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapLayer",
+            "description": "A display layer that renders on top of the imagery set: Default is `TrafficFlow` and, in the UK, `OrdnanceSurvey` is available.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The image format to use for the static map: `gif`, `jpeg`, or `png`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapMetadata",
+            "description": "Specifies whether to return metadata for the static map instead of the image: `1` to return metadata with image, and `0` (default) to not return metadata.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "mapArea",
+            "description": "A rectangular area specified as a bounding box to display on the map, e.g. `45.219,-122.325,47.610,-122.107`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "description": "Specifies the resolution of the labels on the image to retrieve: `large` or `null`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlightEntity",
+            "description": "Highlights a polygon for an entity, `1` to turn highligh on and `0` to turn highlight off",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "declutterPins",
+            "description": "Specifies whether to change the display of overlapping pushpins so that they display separately on a map: `1` to declutter, `0` no decluter (default). This feature is only supported when using the default pushpin style",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "style",
+            "description": "Specifies a custom map style to apply to the road maps",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image of Map"
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/Metadata": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get the metadata for an imagery set",
+        "operationId": "getRESTV1ImageryMetadata",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `Birdseye`, `BirdseyeWithLabels`, `BirdseyeV2`, `BirdseyeV2WithLabels`, `RoadOnDemand`, `OrdnanceSurvey`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Specifies to provide additional information about the imagery as part of the response: if set to `ImageryProviders` then information about imagery providers is returned in the response",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "orientation",
+            "description": "The orientation of the viewport to use for the imagery metadata -- this option only applies to Birdseye imagery",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "uriScheme",
+            "description": "Specifies the scheme that image URL in the response should use: either `http` or `https`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "zoomLevel",
+            "description": "The level of zoom to use for the imagery metadata -- *Required if a centerPoint is specified and imagerySet is set to Road, Aerial or AerialWithLabels*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Imagery/BasicMetadata": {
+      "get": {
+        "tags": [
+          "Imagery V1"
+        ],
+        "summary": "Get only the basic metadata for an imagery set at a specific location",
+        "operationId": "getRESTV1ImageryBasicMetadata",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "imagerySet",
+            "description": "The type of imagery: `Aerial`, `Aerial imagery`, `AerialWithLabelsOnDemand`, `Birdseye`, `BirdseyeWithLabels`, `BirdseyeV2`, `BirdseyeV2WithLabels`, `RoadOnDemand`, `OrdnanceSurvey`, `CanvasDark`, `CanvasLight`, `CanvasGray`, `Road`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "centerPoint",
+            "description": "A point on the Earth where the map is centered",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "Specifies to provide additional information about the imagery as part of the response: if set to `ImageryProviders` then information about imagery providers is returned in the response",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "orientation",
+            "description": "The orientation of the viewport to use for the imagery metadata -- this option only applies to Birdseye imagery",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "uriScheme",
+            "description": "Specifies the scheme that image URL in the response should use: either `http` or `https`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "zoomLevel",
+            "description": "The level of zoom to use for the imagery metadata -- *Required if a centerPoint is specified and imagerySet is set to Road, Aerial or AerialWithLabels*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          }
+        }
+      }
+    },
+    "/REST/v1/Routes/DistanceMatrix": {
+      "get": {
+        "tags": [
+          "Routes V1"
+        ],
+        "summary": "Synchronous: Retrieves a distance matrix for a set of origins and destinations",
+        "operationId": "getRESTV1RoutesDistanceMatrix",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "origins",
+            "description": "List of origins described as coordinate pairs with latitudes and longitudes, e.g. `origins=37.77916,-122.42;32.71568,-117.16172`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "destinations",
+            "description": "List of destinations described as coordinate pairs with latitudes and longitudes, e.g. `destinations=37.77916,-122.42;32.71568,-117.16172`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "travelMode",
+            "description": "Specifies the mode of transportation to use when calculating the distance matrix: `driving`, `walking`, or `transit`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "startTime",
+            "description": "Specifies the start or departure time of the matrix to calculate and uses predictive traffic data -- *required if making asynchronous Driving request*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "endTime",
+            "description": "A matrix based on traffic data with contain a histogram of travel times and distances for the specified resolution intervals (default is 15 minutes) between the start and end times",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "resolution",
+            "description": "The number of intervals to calculate a histogram of data for each cell where a single interval is a quarter of an hour -- *Optional for driving*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceUnit",
+            "description": "The units to use for distances in the response",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "timeUnit",
+            "description": "The units to use for time durations in the response: `minute` or `second`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Responses cannot be located for this operation."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Routes V1"
+        ],
+        "summary": "Synchronous: Retrieves a distance matrix for a set of origins and destinations",
+        "operationId": "postRESTV1RoutesDistanceMatrix",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Set to `application/json`",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "Size of entity body, in OCTETs",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "HTTP POST Body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.DistanceMatrixParameters"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Responses cannot be located for this operation."
+          }
+        }
+      }
+    },
+    "/REST/v1/Routes/DistanceMatrixAsync": {
+      "get": {
+        "tags": [
+          "Routes V1"
+        ],
+        "summary": "Asynchronous: Retrieves a distance matrix for a set of origins and destinations",
+        "operationId": "getRESTV1RoutesDistanceMatrixAsync",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "origins",
+            "description": "List of origins described as coordinate pairs with latitudes and longitudes, e.g. `origins=37.77916,-122.42;32.71568,-117.16172`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "destinations",
+            "description": "List of destinations described as coordinate pairs with latitudes and longitudes, e.g. `destinations=37.77916,-122.42;32.71568,-117.16172`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "travelMode",
+            "description": "Specifies the mode of transportation to use when calculating the distance matrix: `driving`, `walking`, or `transit`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "startTime",
+            "description": "Specifies the start or departure time of the matrix to calculate and uses predictive traffic data -- *required if making asynchronous Driving request*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "endTime",
+            "description": "A matrix based on traffic data with contain a histogram of travel times and distances for the specified resolution intervals (default is 15 minutes) between the start and end times",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "resolution",
+            "description": "The number of intervals to calculate a histogram of data for each cell where a single interval is a quarter of an hour -- *Optional for driving*",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "distanceUnit",
+            "description": "The units to use for distances in the response",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "timeUnit",
+            "description": "The units to use for time durations in the response: `minute` or `second`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Responses cannot be located for this operation."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Routes V1"
+        ],
+        "summary": "Asynchronous: Retrieves a distance matrix for a set of origins and destinations",
+        "operationId": "postRESTV1RoutesDistanceMatrixAsync",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Set to `application/json`",
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "Size of entity body, in OCTETs",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "HTTP POST Body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.DistanceMatrixParameters"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Responses cannot be located for this operation."
+          }
+        }
+      }
+    },
+    "/REST/v1/Routes/DistanceMatrixAsyncCallback": {
+      "get": {
+        "tags": [
+          "Routes V1"
+        ],
+        "summary": "URL for checking Asynchronous Request status",
+        "operationId": "getRESTV1RoutesDistanceMatrixAsyncCallback",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "requestId",
+            "description": "Returned in body of the initial asynchronous request",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Responses cannot be located for this operation."
+          }
+        }
+      }
+    },
+    "/REST/v1/Traffic/Incidents/mapArea/": {
+      "get": {
+        "tags": [
+          "Traffic V1"
+        ],
+        "summary": "Get Traffic Incident Information for a location",
+        "operationId": "getRESTV1TrafficIncidentsMapArea",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeLocationCodes",
+            "description": "Specifies whether to include traffic location codes in the response: `true` or `false`",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "severity",
+            "description": "Integer specifying severity level of traffic incidents to return: `1`: LowImpact, `2`: Minor, `3`: Moderate, `4`: Serious",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "Integer specifying the type of traffic incidents to return: `1`: Accident, `2`: Congestion, `3`: DisabledVehicle, `4`: MassTransit, `5`: Miscellaneous, `6`: OtherNews, `7`: PlannedEvent, `8`: RoadHazard, `9`: Construction, `10`: Alert, `11`: Weather",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample Result",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.SingleResourceResult"
+            }
+          },
+          "401": {
+            "description": "Authentication Failure",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult"
+            }
+          },
+          "404": {
+            "description": "Resource Not Found",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.LocationRecogResult": {
+      "type": "object",
+      "properties": {
+        "isPrivateResidence": {
+          "type": "string"
+        },
+        "businessesAtLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessLocationEntity"
+          }
+        },
+        "naturalPOIAtLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Poi"
+          }
+        },
+        "addressOfLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.AddressInfo"
+          }
+        },
+        "vendorIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Link"
+          }
+        },
+        "Point": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Point"
+        },
+        "JsonBoundingBox": {
+          "type": "array",
+          "items": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "BoundingBox": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.BoundingBox"
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessLocationEntity": {
+      "type": "object",
+      "properties": {
+        "businessAddress": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessAddress"
+        },
+        "businessInfo": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessInfo"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessAddress": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "intersection": {
+          "type": "string"
+        },
+        "addressLine": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "adminDivision": {
+          "type": "string"
+        },
+        "countryIso2": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "formattedAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.BusinessInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "entityName": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "otherTypeIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "otherTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transitStopCode": {
+          "type": "string"
+        },
+        "nameOfParentTransportHub": {
+          "type": "string"
+        },
+        "wheelchairAccessible": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.Poi": {
+      "type": "object",
+      "properties": {
+        "entityName": {
+          "type": "string"
+        },
+        "latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "alternateNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.AddressInfo": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "addressLine": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "adminDivision": {
+          "type": "string"
+        },
+        "adminDivision2": {
+          "type": "string"
+        },
+        "countryIso2": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "formattedAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.Link": {
+      "type": "object",
+      "properties": {
+        "Role": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Url": {
+          "type": "string"
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "System.Runtime.Serialization.ExtensionDataObject": {
+      "type": "object"
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.Point": {
+      "type": "object",
+      "properties": {
+        "ShapeType": {
+          "type": "string"
+        },
+        "Coordinates": {
+          "type": "array",
+          "items": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "Latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "Longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "BoundingBox": {
+          "type": "array",
+          "items": {
+            "format": "double",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.BoundingBox": {
+      "type": "object",
+      "properties": {
+        "Northeast": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Point"
+        },
+        "Southwest": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Point"
+        },
+        "SouthLatitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "WestLongitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "NorthLatitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "EastLongitude": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.Support.Services.AuthenticationFailureResult": {
+      "type": "object",
+      "properties": {
+        "ErrorDetails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AuthenticationResultCode": {
+          "enum": [
+            "None",
+            "NoCredentials",
+            "ValidCredentials",
+            "InvalidCredentials",
+            "CredentialsExpired",
+            "NotAuthorized",
+            "DeniedCredentials"
+          ],
+          "type": "string"
+        },
+        "Content": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Response"
+        },
+        "ContentLocation": {
+          "type": "string"
+        },
+        "Location": {
+          "type": "string"
+        },
+        "ResponseFormat": {
+          "enum": [
+            "Default",
+            "Json",
+            "Xml"
+          ],
+          "type": "string"
+        },
+        "ContentType": {
+          "type": "string"
+        },
+        "ETag": {
+          "type": "string"
+        },
+        "Lifetime": {
+          "$ref": "#/definitions/System.Nullable_System.TimeSpan_"
+        },
+        "HasCustomCacheHeader": {
+          "type": "boolean"
+        },
+        "StatusCode": {
+          "enum": [
+            "Continue",
+            "SwitchingProtocols",
+            "OK",
+            "Created",
+            "Accepted",
+            "NonAuthoritativeInformation",
+            "NoContent",
+            "ResetContent",
+            "PartialContent",
+            "MultipleChoices",
+            "Ambiguous",
+            "MovedPermanently",
+            "Moved",
+            "Found",
+            "Redirect",
+            "SeeOther",
+            "RedirectMethod",
+            "NotModified",
+            "UseProxy",
+            "Unused",
+            "TemporaryRedirect",
+            "RedirectKeepVerb",
+            "BadRequest",
+            "Unauthorized",
+            "PaymentRequired",
+            "Forbidden",
+            "NotFound",
+            "MethodNotAllowed",
+            "NotAcceptable",
+            "ProxyAuthenticationRequired",
+            "RequestTimeout",
+            "Conflict",
+            "Gone",
+            "LengthRequired",
+            "PreconditionFailed",
+            "RequestEntityTooLarge",
+            "RequestUriTooLong",
+            "UnsupportedMediaType",
+            "RequestedRangeNotSatisfiable",
+            "ExpectationFailed",
+            "UpgradeRequired",
+            "InternalServerError",
+            "NotImplemented",
+            "BadGateway",
+            "ServiceUnavailable",
+            "GatewayTimeout",
+            "HttpVersionNotSupported"
+          ],
+          "type": "string"
+        },
+        "StatusDescription": {
+          "type": "string"
+        },
+        "CustomResponseHeaders": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "DebugInfoCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.Response": {
+      "type": "object",
+      "properties": {
+        "Copyright": {
+          "type": "string"
+        },
+        "BrandLogoUri": {
+          "type": "string"
+        },
+        "StatusCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StatusDescription": {
+          "type": "string"
+        },
+        "AuthenticationResultCode": {
+          "enum": [
+            "None",
+            "NoCredentials",
+            "ValidCredentials",
+            "InvalidCredentials",
+            "CredentialsExpired",
+            "NotAuthorized",
+            "DeniedCredentials"
+          ],
+          "type": "string"
+        },
+        "JsonAuthenticationResultCode": {
+          "type": "string"
+        },
+        "ErrorDetails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ServiceErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.ServiceError"
+          }
+        },
+        "TraceId": {
+          "type": "string"
+        },
+        "ResourceSets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.ResourceSet"
+          }
+        },
+        "DebugInfoCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo"
+          }
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.ServiceError": {
+      "type": "object",
+      "properties": {
+        "ErrorDetails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ErrorCode": {
+          "type": "string"
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.ResourceSet": {
+      "type": "object",
+      "properties": {
+        "ResourceType": {
+          "type": "string"
+        },
+        "EstimatedTotal": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Resource"
+          }
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        },
+        "ResourceSetId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.Resource": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Link"
+          }
+        },
+        "Point": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Point"
+        },
+        "JsonBoundingBox": {
+          "type": "array",
+          "items": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "BoundingBox": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.BoundingBox"
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo": {
+      "type": "object",
+      "properties": {
+        "ServiceName": {
+          "type": "string"
+        },
+        "RequestString": {
+          "type": "string"
+        },
+        "ResponseString": {
+          "type": "string"
+        },
+        "RequestHeaders": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ExtensionData": {
+          "$ref": "#/definitions/System.Runtime.Serialization.ExtensionDataObject"
+        }
+      }
+    },
+    "System.Nullable_System.TimeSpan_": {
+      "type": "object",
+      "properties": {
+        "HasValue": {
+          "type": "boolean"
+        },
+        "Value": {
+          "$ref": "#/definitions/System.TimeSpan"
+        }
+      }
+    },
+    "System.TimeSpan": {
+      "type": "object",
+      "properties": {
+        "Ticks": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Days": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Hours": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Milliseconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Minutes": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Seconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TotalDays": {
+          "format": "double",
+          "type": "number"
+        },
+        "TotalHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "TotalMilliseconds": {
+          "format": "double",
+          "type": "number"
+        },
+        "TotalMinutes": {
+          "format": "double",
+          "type": "number"
+        },
+        "TotalSeconds": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.Support.Services.ResourceNotFoundResult": {
+      "type": "object",
+      "properties": {
+        "ErrorDetails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AuthenticationResultCode": {
+          "enum": [
+            "None",
+            "NoCredentials",
+            "ValidCredentials",
+            "InvalidCredentials",
+            "CredentialsExpired",
+            "NotAuthorized",
+            "DeniedCredentials"
+          ],
+          "type": "string"
+        },
+        "Content": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Response"
+        },
+        "ContentLocation": {
+          "type": "string"
+        },
+        "Location": {
+          "type": "string"
+        },
+        "ResponseFormat": {
+          "enum": [
+            "Default",
+            "Json",
+            "Xml"
+          ],
+          "type": "string"
+        },
+        "ContentType": {
+          "type": "string"
+        },
+        "ETag": {
+          "type": "string"
+        },
+        "Lifetime": {
+          "$ref": "#/definitions/System.Nullable_System.TimeSpan_"
+        },
+        "HasCustomCacheHeader": {
+          "type": "boolean"
+        },
+        "StatusCode": {
+          "enum": [
+            "Continue",
+            "SwitchingProtocols",
+            "OK",
+            "Created",
+            "Accepted",
+            "NonAuthoritativeInformation",
+            "NoContent",
+            "ResetContent",
+            "PartialContent",
+            "MultipleChoices",
+            "Ambiguous",
+            "MovedPermanently",
+            "Moved",
+            "Found",
+            "Redirect",
+            "SeeOther",
+            "RedirectMethod",
+            "NotModified",
+            "UseProxy",
+            "Unused",
+            "TemporaryRedirect",
+            "RedirectKeepVerb",
+            "BadRequest",
+            "Unauthorized",
+            "PaymentRequired",
+            "Forbidden",
+            "NotFound",
+            "MethodNotAllowed",
+            "NotAcceptable",
+            "ProxyAuthenticationRequired",
+            "RequestTimeout",
+            "Conflict",
+            "Gone",
+            "LengthRequired",
+            "PreconditionFailed",
+            "RequestEntityTooLarge",
+            "RequestUriTooLong",
+            "UnsupportedMediaType",
+            "RequestedRangeNotSatisfiable",
+            "ExpectationFailed",
+            "UpgradeRequired",
+            "InternalServerError",
+            "NotImplemented",
+            "BadGateway",
+            "ServiceUnavailable",
+            "GatewayTimeout",
+            "HttpVersionNotSupported"
+          ],
+          "type": "string"
+        },
+        "StatusDescription": {
+          "type": "string"
+        },
+        "CustomResponseHeaders": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "DebugInfoCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.Support.Services.SingleResourceResult": {
+      "type": "object",
+      "properties": {
+        "Resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Resource"
+          }
+        },
+        "AuthenticationResultCode": {
+          "enum": [
+            "None",
+            "NoCredentials",
+            "ValidCredentials",
+            "InvalidCredentials",
+            "CredentialsExpired",
+            "NotAuthorized",
+            "DeniedCredentials"
+          ],
+          "type": "string"
+        },
+        "Content": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Response"
+        },
+        "ContentLocation": {
+          "type": "string"
+        },
+        "Location": {
+          "type": "string"
+        },
+        "ResponseFormat": {
+          "enum": [
+            "Default",
+            "Json",
+            "Xml"
+          ],
+          "type": "string"
+        },
+        "ContentType": {
+          "type": "string"
+        },
+        "ETag": {
+          "type": "string"
+        },
+        "Lifetime": {
+          "$ref": "#/definitions/System.Nullable_System.TimeSpan_"
+        },
+        "HasCustomCacheHeader": {
+          "type": "boolean"
+        },
+        "StatusCode": {
+          "enum": [
+            "Continue",
+            "SwitchingProtocols",
+            "OK",
+            "Created",
+            "Accepted",
+            "NonAuthoritativeInformation",
+            "NoContent",
+            "ResetContent",
+            "PartialContent",
+            "MultipleChoices",
+            "Ambiguous",
+            "MovedPermanently",
+            "Moved",
+            "Found",
+            "Redirect",
+            "SeeOther",
+            "RedirectMethod",
+            "NotModified",
+            "UseProxy",
+            "Unused",
+            "TemporaryRedirect",
+            "RedirectKeepVerb",
+            "BadRequest",
+            "Unauthorized",
+            "PaymentRequired",
+            "Forbidden",
+            "NotFound",
+            "MethodNotAllowed",
+            "NotAcceptable",
+            "ProxyAuthenticationRequired",
+            "RequestTimeout",
+            "Conflict",
+            "Gone",
+            "LengthRequired",
+            "PreconditionFailed",
+            "RequestEntityTooLarge",
+            "RequestUriTooLong",
+            "UnsupportedMediaType",
+            "RequestedRangeNotSatisfiable",
+            "ExpectationFailed",
+            "UpgradeRequired",
+            "InternalServerError",
+            "NotImplemented",
+            "BadGateway",
+            "ServiceUnavailable",
+            "GatewayTimeout",
+            "HttpVersionNotSupported"
+          ],
+          "type": "string"
+        },
+        "StatusDescription": {
+          "type": "string"
+        },
+        "CustomResponseHeaders": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "DebugInfoCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.Support.Services.MultipleResourceResult": {
+      "type": "object",
+      "properties": {
+        "Resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Resource"
+          }
+        },
+        "AuthenticationResultCode": {
+          "enum": [
+            "None",
+            "NoCredentials",
+            "ValidCredentials",
+            "InvalidCredentials",
+            "CredentialsExpired",
+            "NotAuthorized",
+            "DeniedCredentials"
+          ],
+          "type": "string"
+        },
+        "Content": {
+          "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Rest.V1.Response"
+        },
+        "ContentLocation": {
+          "type": "string"
+        },
+        "Location": {
+          "type": "string"
+        },
+        "ResponseFormat": {
+          "enum": [
+            "Default",
+            "Json",
+            "Xml"
+          ],
+          "type": "string"
+        },
+        "ContentType": {
+          "type": "string"
+        },
+        "ETag": {
+          "type": "string"
+        },
+        "Lifetime": {
+          "$ref": "#/definitions/System.Nullable_System.TimeSpan_"
+        },
+        "HasCustomCacheHeader": {
+          "type": "boolean"
+        },
+        "StatusCode": {
+          "enum": [
+            "Continue",
+            "SwitchingProtocols",
+            "OK",
+            "Created",
+            "Accepted",
+            "NonAuthoritativeInformation",
+            "NoContent",
+            "ResetContent",
+            "PartialContent",
+            "MultipleChoices",
+            "Ambiguous",
+            "MovedPermanently",
+            "Moved",
+            "Found",
+            "Redirect",
+            "SeeOther",
+            "RedirectMethod",
+            "NotModified",
+            "UseProxy",
+            "Unused",
+            "TemporaryRedirect",
+            "RedirectKeepVerb",
+            "BadRequest",
+            "Unauthorized",
+            "PaymentRequired",
+            "Forbidden",
+            "NotFound",
+            "MethodNotAllowed",
+            "NotAcceptable",
+            "ProxyAuthenticationRequired",
+            "RequestTimeout",
+            "Conflict",
+            "Gone",
+            "LengthRequired",
+            "PreconditionFailed",
+            "RequestEntityTooLarge",
+            "RequestUriTooLong",
+            "UnsupportedMediaType",
+            "RequestedRangeNotSatisfiable",
+            "ExpectationFailed",
+            "UpgradeRequired",
+            "InternalServerError",
+            "NotImplemented",
+            "BadGateway",
+            "ServiceUnavailable",
+            "GatewayTimeout",
+            "HttpVersionNotSupported"
+          ],
+          "type": "string"
+        },
+        "StatusDescription": {
+          "type": "string"
+        },
+        "CustomResponseHeaders": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "DebugInfoCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.VirtualEarth.PublicTypes.Common.DebugInfo"
+          }
+        }
+      }
+    },
+    "Microsoft.VirtualEarth.PublicTypes.Rest.V1.DistanceMatrixParameters": {
+      "type": "object"
+    }
+  }
+}
